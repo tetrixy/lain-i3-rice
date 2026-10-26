@@ -138,7 +138,7 @@ function OverviewSection() {
       </div>
 
       {/* Features Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         <FeatureCard
           icon="⌨"
           title="i3-wm"
@@ -153,6 +153,11 @@ function OverviewSection() {
           icon="▣"
           title="Идемпотентность"
           description="Повторный запуск install.sh не ломает систему. Бэкапы, проверки, --dry-run"
+        />
+        <FeatureCard
+          icon="♪"
+          title="PipeWire + MPD"
+          description="Современный звуковой сервер PipeWire с музыкальным плеером MPD и виджетом в polybar"
         />
       </div>
 
@@ -169,8 +174,8 @@ function OverviewSection() {
 
       {/* Quick Stats */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <StatCard label="Файлов" value="9" />
-        <StatCard label="Пакетов" value="~20" />
+        <StatCard label="Файлов" value="16" />
+        <StatCard label="Пакетов" value="~25" />
         <StatCard label="Горячих клавиш" value={hotkeys.length.toString()} />
         <StatCard label="AUR-пакетов" value="3" />
       </div>

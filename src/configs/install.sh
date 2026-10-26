@@ -163,6 +163,14 @@ echo ""
 
 # --- Step 1: Install packages from packages.txt ---
 info "Step 1: Installing packages..."
+
+# Replace PulseAudio with PipeWire if needed
+if pacman -Q pulseaudio &>/dev/null; then
+  warn "Removing PulseAudio (replacing with PipeWire)..."
+  run_cmd sudo pacman -R --noconfirm --nodeps pulseaudio pulseaudio-alsa pulseaudio-bluetooth 2>/dev/null || true
+fi
+
+# Install all packages
 while IFS= read -r line || [[ -n "$line" ]]; do
   # Skip comments and empty lines
   line="$(echo "$line" | sed 's/#.*//' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')"

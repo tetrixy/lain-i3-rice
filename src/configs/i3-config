@@ -65,6 +65,9 @@ exec --no-startup-id nm-applet
 # Music Player Daemon (MPD)
 exec --no-startup-id mpd
 
+# WirePlumber (PipeWire session manager)
+exec --no-startup-id wireplumber
+
 # --- Key bindings ---
 
 # Start terminal (Alacritty)

@@ -145,11 +145,20 @@ export const repoTree = `lain-i3-rice/
 │   │   └── picom.conf
 │   ├── rofi/
 │   │   └── lain.rasi
-│   └── alacritty/
-│       └── alacritty.yml
+│   ├── alacritty/
+│   │   └── alacritty.yml
+│   ├── dunst/
+│   │   └── dunstrc
+│   ├── mpd/
+│   │   └── mpd.conf
+│   └── ncmpcpp/
+│       └── config
 ├── scripts/
 │   ├── wallpaper.sh
-│   └── lock.sh
+│   ├── lock.sh
+│   ├── screenshot.sh
+│   ├── brightness.sh
+│   └── mpd-control.sh
 └── wallpapers/
     └── (lain.png — downloaded at install time)`;
 

@@ -120,6 +120,7 @@ label-foreground = ${colors.foreground-dim}
 
 [module/volume]
 type = internal/pulseaudio
+; Works with PipeWire via pipewire-pulse compatibility layer
 
 format-volume = <label-volume>
 format-volume-prefix = "VOL "

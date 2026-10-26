@@ -32,6 +32,12 @@ ranger
 ttf-jetbrains-mono
 # NOTE: ttf-iosevka is from AUR (installed separately in install.sh)
 
+# Audio (PipeWire — modern replacement for PulseAudio)
+pipewire
+pipewire-alsa
+pipewire-pulse
+wireplumber
+
 # Utilities
 xorg-xset
 xorg-xrandr
