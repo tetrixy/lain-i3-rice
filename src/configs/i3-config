@@ -62,6 +62,12 @@ exec_always --no-startup-id feh --bg-fill ~/.local/share/wallpapers/lain.png
 # Network applet
 exec --no-startup-id nm-applet
 
+# Bluetooth applet
+exec --no-startup-id blueman-applet
+
+# Clipboard manager
+exec --no-startup-id clipit
+
 # Music Player Daemon (MPD)
 exec --no-startup-id mpd
 

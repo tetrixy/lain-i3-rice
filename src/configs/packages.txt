@@ -25,18 +25,67 @@ feh
 # Notification daemon
 dunst
 
-# File manager (optional but useful)
+# Web browser
+firefox
+
+# File manager (GUI)
+thunar
+
+# File manager (TUI)
 ranger
+
+# Image viewer
+imv
+
+# PDF viewer
+zathura
+zathura-pdf-mupdf
+
+# Video player
+mpv
+
+# Text editor
+neovim
+
+# Archive manager
+file-roller
+
+# Clipboard manager
+clipit
+
+# Bluetooth
+bluez
+bluez-utils
+blueman
+
+# Power management (for laptops)
+tlp
+
+# System monitoring
+htop
 
 # Fonts (monospace with Cyrillic support)
 ttf-jetbrains-mono
 # NOTE: ttf-iosevka is from AUR (installed separately in install.sh)
+noto-fonts
+noto-fonts-emoji
+noto-fonts-cjk
+
+# GTK theme and icons
+arc-gtk-theme
+papirus-icon-theme
+bibata-cursor-theme
 
 # Audio (PipeWire — modern replacement for PulseAudio)
 pipewire
 pipewire-alsa
 pipewire-pulse
 wireplumber
+
+# Music player
+mpd
+mpc
+ncmpcpp
 
 # Utilities
 xorg-xset
@@ -52,7 +101,9 @@ xdotool
 # Brightness control (for laptops)
 brightnessctl
 
-# Music player
-mpd
-mpc
-ncmpcpp
+# Multimedia codecs
+gst-plugins-base
+gst-plugins-good
+gst-plugins-bad
+gst-plugins-ugly
+gst-libav

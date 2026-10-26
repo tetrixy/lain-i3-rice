@@ -14,6 +14,9 @@ import brightnessSh from '../configs/brightness.sh?raw';
 import mpdConf from '../configs/mpd.conf?raw';
 import ncmpcppConf from '../configs/ncmpcpp.conf?raw';
 import mpdControlSh from '../configs/mpd-control.sh?raw';
+import xresources from '../configs/Xresources?raw';
+import gtkSettings from '../configs/gtk-3.0-settings.ini?raw';
+import setupThemeSh from '../configs/setup-theme.sh?raw';
 
 export interface RepoFile {
   path: string;
@@ -129,6 +132,27 @@ export const repoFiles: RepoFile[] = [
     language: "ini",
     category: "config"
   },
+  {
+    path: "Xresources",
+    description: "X11 resources — Lain colors for xterm/urxvt, cursor theme, DPI settings",
+    content: xresources,
+    language: "ini",
+    category: "config"
+  },
+  {
+    path: "gtk-3.0/settings.ini",
+    description: "GTK 3.0/4.0 settings — Arc-Dark theme, Papirus icons, Bibata cursor",
+    content: gtkSettings,
+    language: "ini",
+    category: "config"
+  },
+  {
+    path: "scripts/setup-theme.sh",
+    description: "Apply Lain theme to GTK, Xresources, cursor — run after install",
+    content: setupThemeSh,
+    language: "bash",
+    category: "scripts"
+  },
 ];
 
 export const repoTree = `lain-i3-rice/
@@ -136,6 +160,7 @@ export const repoTree = `lain-i3-rice/
 ├── install.sh
 ├── .gitignore
 ├── packages.txt
+├── Xresources
 ├── config/
 │   ├── i3/
 │   │   └── config
@@ -151,14 +176,17 @@ export const repoTree = `lain-i3-rice/
 │   │   └── dunstrc
 │   ├── mpd/
 │   │   └── mpd.conf
-│   └── ncmpcpp/
-│       └── config
+│   ├── ncmpcpp/
+│   │   └── config
+│   └── gtk-3.0/
+│       └── settings.ini
 ├── scripts/
 │   ├── wallpaper.sh
 │   ├── lock.sh
 │   ├── screenshot.sh
 │   ├── brightness.sh
-│   └── mpd-control.sh
+│   ├── mpd-control.sh
+│   └── setup-theme.sh
 └── wallpapers/
     └── (lain.png — downloaded at install time)`;
 

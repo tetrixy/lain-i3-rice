@@ -224,6 +224,15 @@ deploy_config "$CONFIG_SRC/mpd.conf" "$HOME/.config/mpd/mpd.conf"
 # ncmpcpp config
 deploy_config "$CONFIG_SRC/ncmpcpp.conf" "$HOME/.config/ncmpcpp/config"
 
+# Xresources
+deploy_config "$CONFIG_SRC/Xresources" "$HOME/.Xresources"
+
+# GTK 3.0 settings
+deploy_config "$CONFIG_SRC/gtk-3.0-settings.ini" "$HOME/.config/gtk-3.0/settings.ini"
+
+# GTK 4.0 settings (same as 3.0)
+deploy_config "$CONFIG_SRC/gtk-3.0-settings.ini" "$HOME/.config/gtk-4.0/settings.ini"
+
 # --- Step 3: Deploy scripts ---
 info "Step 3: Deploying scripts..."
 deploy_config "$SCRIPTS_SRC/wallpaper.sh" "$HOME/.local/bin/wallpaper.sh"
@@ -231,6 +240,7 @@ deploy_config "$SCRIPTS_SRC/lock.sh" "$HOME/.local/bin/lock.sh"
 deploy_config "$SCRIPTS_SRC/screenshot.sh" "$HOME/.local/bin/screenshot.sh"
 deploy_config "$SCRIPTS_SRC/brightness.sh" "$HOME/.local/bin/brightness.sh"
 deploy_config "$SCRIPTS_SRC/mpd-control.sh" "$HOME/.local/bin/mpd-control.sh"
+deploy_config "$SCRIPTS_SRC/setup-theme.sh" "$HOME/.local/bin/setup-theme.sh"
 
 if ! $DRY_RUN; then
   chmod +x "$HOME/.local/bin/wallpaper.sh"
@@ -238,6 +248,7 @@ if ! $DRY_RUN; then
   chmod +x "$HOME/.local/bin/screenshot.sh"
   chmod +x "$HOME/.local/bin/brightness.sh"
   chmod +x "$HOME/.local/bin/mpd-control.sh"
+  chmod +x "$HOME/.local/bin/setup-theme.sh"
 fi
 
 # --- Step 4: Download wallpaper ---
@@ -272,8 +283,26 @@ done
 
 # --- Step 6: Enable services ---
 info "Step 6: Enabling services..."
+
+# Enable Bluetooth service
+if pacman -Q bluez &>/dev/null; then
+  info "Enabling Bluetooth service..."
+  run_cmd sudo systemctl enable --now bluetooth
+fi
+
+# Enable TLP service (power management)
+if pacman -Q tlp &>/dev/null; then
+  info "Enabling TLP power management..."
+  run_cmd sudo systemctl enable --now tlp
+fi
+
+# Apply Xresources
+if [[ -f "$HOME/.Xresources" ]] && command -v xrdb &>/dev/null; then
+  info "Applying Xresources..."
+  run_cmd xrdb -merge "$HOME/.Xresources"
+fi
+
 # picom, polybar, and mpd are started via i3 exec/exec_always (see i3/config)
-# No systemd services needed for i3 rice
 
 info ""
 info "=========================================="

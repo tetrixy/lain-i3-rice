@@ -1,0 +1,84 @@
+! ============================================================================
+! Xresources — Serial Experiments Lain rice
+! Source: https://wiki.archlinux.org/title/X_resources
+! ============================================================================
+
+! --- Colors (Lain palette) ---
+! Background: #0d0f14 (deep blue-gray)
+! Foreground: #b8c0cc
+! Accent: #4a7c59 (dim green)
+! Signal: #39ff14 (bright green)
+! Blood: #6b2d3c (red)
+
+*.foreground: #b8c0cc
+*.background: #0d0f14
+*.cursorColor: #39ff14
+
+! Black
+*.color0:  #0d0f14
+*.color8:  #1a1d24
+
+! Red (blood)
+*.color1:  #6b2d3c
+*.color9:  #8b3a4a
+
+! Green
+*.color2:  #4a7c59
+*.color10: #39ff14
+
+! Yellow
+*.color3:  #8b7355
+*.color11: #c4a35a
+
+! Blue
+*.color4:  #3d5a80
+*.color12: #5a8ab4
+
+! Magenta
+*.color5:  #4d353c
+*.color13: #6b4d5c
+
+! Cyan
+*.color6:  #4a7c59
+*.color14: #5a9c6f
+
+! White
+*.color7:  #b8c0cc
+*.color15: #d4dae4
+
+! --- Font ---
+*font: JetBrains Mono:size=10
+
+! --- Xterm ---
+xterm*faceName: JetBrains Mono
+xterm*faceSize: 10
+xterm*dynamicColors: true
+xterm*utf8: 1
+xterm*allowTitleOps: false
+xterm*saveLines: 10000
+xterm*scrollBar: false
+xterm*borderWidth: 0
+xterm*internalBorder: 8
+
+! --- URxvt ---
+URxvt.font: xft:JetBrains Mono:size=10
+URxvt.letterSpace: 0
+URxvt.lineSpace: 0
+URxvt.scrollBar: false
+URxvt.borderless: true
+URxvt.internalBorder: 8
+URxvt.cursorBlink: true
+URxvt.cursorUnderline: false
+URxvt.urgentOnBell: true
+URxvt.visualBell: true
+
+! --- Cursor ---
+Xcursor.theme: Bibata-Modern-Classic
+Xcursor.size: 24
+
+! --- DPI ---
+Xft.dpi: 96
+Xft.antialias: true
+Xft.hinting: true
+Xft.hintstyle: hintslight
+Xft.rgba: rgb

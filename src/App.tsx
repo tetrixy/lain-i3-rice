@@ -159,6 +159,26 @@ function OverviewSection() {
           title="PipeWire + MPD"
           description="Современный звуковой сервер PipeWire с музыкальным плеером MPD и виджетом в polybar"
         />
+        <FeatureCard
+          icon="🌐"
+          title="Браузер + файлы"
+          description="Firefox, Thunar, zathura, mpv — всё для повседневной работы из коробки"
+        />
+        <FeatureCard
+          icon="🎨"
+          title="Тема + иконки"
+          description="Arc-Dark GTK, Papirus иконки, Bibata курсор, Noto шрифты с эмодзи и CJK"
+        />
+        <FeatureCard
+          icon="📡"
+          title="Bluetooth + TLP"
+          description="Полная поддержка Bluetooth наушников и оптимизация энергопотребления ноутбука"
+        />
+        <FeatureCard
+          icon="📋"
+          title="Clipit + dunst"
+          description="Менеджер буфера обмена с историей и красивые уведомления в стиле Lain"
+        />
       </div>
 
       {/* Repo Tree */}
@@ -174,8 +194,8 @@ function OverviewSection() {
 
       {/* Quick Stats */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <StatCard label="Файлов" value="16" />
-        <StatCard label="Пакетов" value="~25" />
+        <StatCard label="Файлов" value="19" />
+        <StatCard label="Пакетов" value="~55" />
         <StatCard label="Горячих клавиш" value={hotkeys.length.toString()} />
         <StatCard label="AUR-пакетов" value="3" />
       </div>
