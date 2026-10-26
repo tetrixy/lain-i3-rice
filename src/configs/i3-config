@@ -62,6 +62,9 @@ exec_always --no-startup-id feh --bg-fill ~/.local/share/wallpapers/lain.png
 # Network applet
 exec --no-startup-id nm-applet
 
+# Music Player Daemon (MPD)
+exec --no-startup-id mpd
+
 # --- Key bindings ---
 
 # Start terminal (Alacritty)
@@ -175,6 +178,14 @@ bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 
+# --- Brightness keys (for laptops) ---
+bindsym XF86MonBrightnessUp exec --no-startup-id ~/.local/bin/brightness.sh --up
+bindsym XF86MonBrightnessDown exec --no-startup-id ~/.local/bin/brightness.sh --down
+
+# --- Music player (MPD + ncmpcpp) ---
+bindsym $mod+m exec --no-startup-id alacritty -e ncmpcpp
+bindsym $mod+Shift+m exec --no-startup-id ~/.local/bin/mpd-control.sh toggle
+
 # --- Screenshot ---
 bindsym Print exec --no-startup-id maim ~/screenshot_$(date +%Y%m%d_%H%M%S).png
 
@@ -183,7 +194,26 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Exit i3?' -B 'Yes' 'i3-msg exit'"
 
+# --- Window assignments ---
+# Assign applications to specific workspaces
+assign [class="Firefox"] $ws2
+assign [class="firefox"] $ws2
+assign [class="Chromium"] $ws2
+assign [class="Google-chrome"] $ws2
+
+# Open terminal on workspace 1
+assign [class="Alacritty"] $ws1
+assign [class="kitty"] $ws1
+
+# Open music player on workspace 5 (flux)
+assign [class="ncmpcpp"] $ws5
+
 # --- Floating window criteria ---
 for_window [class="(?i)float"] floating enable
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="dialog"] floating enable
+for_window [class="Pavucontrol"] floating enable
+for_window [class="Blueman-manager"] floating enable
+for_window [class="Nm-connection-editor"] floating enable
+for_window [class="GParted"] floating enable
+for_window [class="(?i)policykit"] floating enable

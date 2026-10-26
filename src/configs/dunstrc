@@ -1,0 +1,84 @@
+# ============================================================================
+# Dunst notification daemon config — Serial Experiments Lain rice
+# Source: https://wiki.archlinux.org/title/Dunst
+# ============================================================================
+
+[global]
+# Display
+monitor = 0
+follow = mouse
+
+# Appearance
+font = JetBrains Mono 10
+markup = full
+format = "<b>%s</b>\n%b"
+sort = yes
+indicate_hidden = yes
+alignment = left
+show_age_threshold = 60
+word_wrap = yes
+ignore_newline = no
+stack_duplicates = true
+hide_duplicate_count = false
+show_indicators = yes
+
+# Geometry
+geometry = "350x5-10+35"
+shrink = no
+transparency = 5
+idle_threshold = 120
+
+# Colors (Lain palette)
+# Background: #0d0f14 (deep blue-gray)
+# Foreground: #b8c0cc
+# Accent: #4a7c59 (dim green)
+# Alert: #6b2d3c (blood red)
+frame_color = "#2a2f3a"
+separator_height = 2
+padding = 12
+horizontal_padding = 12
+frame_width = 1
+
+# Separators
+separator_color = frame
+
+# Icons
+icon_position = left
+max_icon_size = 48
+
+# History
+history_length = 20
+
+# Mouse
+mouse_left_click = close_current
+mouse_middle_click = do_action
+mouse_right_click = close_all
+
+# Notification behavior
+sticky_history = yes
+startup_notification = false
+
+[shortcuts]
+# Keyboard shortcuts (when notification is focused)
+close = ctrl+space
+close_all = ctrl+shift+space
+history = ctrl+grave
+context = ctrl+shift+period
+
+# Urgency levels
+[urgency_low]
+background = "#131927"
+foreground = "#6b7280"
+timeout = 10
+
+[urgency_normal]
+background = "#0d0f14"
+foreground = "#b8c0cc"
+frame_color = "#4a7c59"
+timeout = 10
+
+[urgency_critical]
+background = "#4d353c"
+foreground = "#b8c0cc"
+frame_color = "#6b2d3c"
+timeout = 0

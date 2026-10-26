@@ -207,14 +207,29 @@ deploy_config "$CONFIG_SRC/rofi/lain.rasi" "$HOME/.config/rofi/lain.rasi"
 # Alacritty config
 deploy_config "$CONFIG_SRC/alacritty/alacritty.yml" "$HOME/.config/alacritty/alacritty.yml"
 
+# Dunst config
+deploy_config "$CONFIG_SRC/dunstrc" "$HOME/.config/dunst/dunstrc"
+
+# MPD config
+deploy_config "$CONFIG_SRC/mpd.conf" "$HOME/.config/mpd/mpd.conf"
+
+# ncmpcpp config
+deploy_config "$CONFIG_SRC/ncmpcpp.conf" "$HOME/.config/ncmpcpp/config"
+
 # --- Step 3: Deploy scripts ---
 info "Step 3: Deploying scripts..."
 deploy_config "$SCRIPTS_SRC/wallpaper.sh" "$HOME/.local/bin/wallpaper.sh"
 deploy_config "$SCRIPTS_SRC/lock.sh" "$HOME/.local/bin/lock.sh"
+deploy_config "$SCRIPTS_SRC/screenshot.sh" "$HOME/.local/bin/screenshot.sh"
+deploy_config "$SCRIPTS_SRC/brightness.sh" "$HOME/.local/bin/brightness.sh"
+deploy_config "$SCRIPTS_SRC/mpd-control.sh" "$HOME/.local/bin/mpd-control.sh"
 
 if ! $DRY_RUN; then
   chmod +x "$HOME/.local/bin/wallpaper.sh"
   chmod +x "$HOME/.local/bin/lock.sh"
+  chmod +x "$HOME/.local/bin/screenshot.sh"
+  chmod +x "$HOME/.local/bin/brightness.sh"
+  chmod +x "$HOME/.local/bin/mpd-control.sh"
 fi
 
 # --- Step 4: Download wallpaper ---
@@ -233,9 +248,23 @@ else
   run_cmd curl -L -o "$WALLPAPER_PATH" "$WALLPAPER_URL"
 fi
 
-# --- Step 5: Enable services ---
-info "Step 5: Enabling services..."
-# picom and polybar are started via i3 exec_always (see i3/config)
+# --- Step 5: Create MPD directories ---
+info "Step 5: Creating MPD directories..."
+MPD_DIRS=(
+  "$HOME/.config/mpd/playlists"
+  "$HOME/Music"
+)
+
+for dir in "${MPD_DIRS[@]}"; do
+  if [[ ! -d "$dir" ]]; then
+    info "Creating directory: $dir"
+    run_cmd mkdir -p "$dir"
+  fi
+done
+
+# --- Step 6: Enable services ---
+info "Step 6: Enabling services..."
+# picom, polybar, and mpd are started via i3 exec/exec_always (see i3/config)
 # No systemd services needed for i3 rice
 
 info ""

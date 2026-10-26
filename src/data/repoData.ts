@@ -8,6 +8,12 @@ import rofiRasi from '../configs/rofi.rasi?raw';
 import alacrittyYml from '../configs/alacritty.yml?raw';
 import wallpaperSh from '../configs/wallpaper.sh?raw';
 import lockSh from '../configs/lock.sh?raw';
+import dunstrc from '../configs/dunstrc?raw';
+import screenshotSh from '../configs/screenshot.sh?raw';
+import brightnessSh from '../configs/brightness.sh?raw';
+import mpdConf from '../configs/mpd.conf?raw';
+import ncmpcppConf from '../configs/ncmpcpp.conf?raw';
+import mpdControlSh from '../configs/mpd-control.sh?raw';
 
 export interface RepoFile {
   path: string;
@@ -81,6 +87,48 @@ export const repoFiles: RepoFile[] = [
     language: "bash",
     category: "scripts"
   },
+  {
+    path: "scripts/screenshot.sh",
+    description: "Screenshot utility with region/window/full modes and clipboard support",
+    content: screenshotSh,
+    language: "bash",
+    category: "scripts"
+  },
+  {
+    path: "scripts/brightness.sh",
+    description: "Brightness control utility for laptops",
+    content: brightnessSh,
+    language: "bash",
+    category: "scripts"
+  },
+  {
+    path: "scripts/mpd-control.sh",
+    description: "MPD control utility (play/pause/next/prev/status)",
+    content: mpdControlSh,
+    language: "bash",
+    category: "scripts"
+  },
+  {
+    path: "config/dunst/dunstrc",
+    description: "Dunst notification daemon — Lain colors, top-right position",
+    content: dunstrc,
+    language: "ini",
+    category: "config"
+  },
+  {
+    path: "config/mpd/mpd.conf",
+    description: "Music Player Daemon — PulseAudio output, gapless playback",
+    content: mpdConf,
+    language: "ini",
+    category: "config"
+  },
+  {
+    path: "config/ncmpcpp/config",
+    description: "ncmpcpp MPD client — Lain colors, columns layout, visualizer",
+    content: ncmpcppConf,
+    language: "ini",
+    category: "config"
+  },
 ];
 
 export const repoTree = `lain-i3-rice/
@@ -118,7 +166,11 @@ export const hotkeys = [
   { keys: "Mod+Shift+c", action: "Reload i3 config", actionRu: "Перезагрузить конфиг" },
   { keys: "Mod+Shift+r", action: "Restart i3", actionRu: "Перезапустить i3" },
   { keys: "Mod+Shift+e", action: "Exit i3", actionRu: "Выйти из i3" },
-  { keys: "Print", action: "Screenshot", actionRu: "Скриншот" },
+  { keys: "Mod+m", action: "Open music player (ncmpcpp)", actionRu: "Открыть плеер" },
+  { keys: "Mod+Shift+m", action: "Toggle MPD play/pause", actionRu: "Воспр./пауза MPD" },
+  { keys: "Print", action: "Screenshot (full)", actionRu: "Скриншот (весь экран)" },
+  { keys: "XF86MonBrightnessUp/Down", action: "Brightness control", actionRu: "Яркость" },
+  { keys: "XF86AudioPlay/Next/Prev", action: "Media control", actionRu: "Управление медиа" },
   { keys: "Alt+Shift", action: "Toggle US/RU layout", actionRu: "Переключить раскладку" },
 ];
 

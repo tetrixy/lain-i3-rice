@@ -41,3 +41,12 @@ pamixer
 network-manager-applet
 maim
 xclip
+xdotool
+
+# Brightness control (for laptops)
+brightnessctl
+
+# Music player
+mpd
+mpc
+ncmpcpp
