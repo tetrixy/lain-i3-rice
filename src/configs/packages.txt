@@ -1,0 +1,42 @@
+# ============================================================================
+# lain-i3-rice — Required packages
+# Source: Arch Wiki package lists
+# ============================================================================
+
+# Window manager
+i3-wm
+
+# Status bar
+polybar
+
+# Application launcher
+rofi
+
+# Terminal emulator
+alacritty
+
+# Wallpaper setter
+feh
+
+# Screen locker (themed version from AUR: i3lock-color)
+i3lock
+
+# Notification daemon
+dunst
+
+# File manager (optional but useful)
+ranger
+
+# Fonts (monospace with Cyrillic support)
+ttf-jetbrains-mono
+ttf-iosevka
+
+# Utilities
+xorg-xset
+xorg-xrandr
+xorg-setxkbmap
+playerctl
+pamixer
+network-manager-applet
+maim
+xclip

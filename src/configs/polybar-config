@@ -1,0 +1,180 @@
+; ============================================================================
+; Polybar config — Serial Experiments Lain rice
+; Source: https://github.com/polybar/polybar/wiki
+; ============================================================================
+
+[colors]
+; Lain palette
+background = #0d0f14
+background-alt = #131927
+foreground = #b8c0cc
+foreground-dim = #6b7280
+primary = #4a7c59
+secondary = #4d353c
+alert = #6b2d3c
+signal-green = #39ff14
+border = #2a2f3a
+
+[bar/main]
+width = 100%
+height = 28pt
+radius = 0
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+border-bottom-size = 1
+border-bottom-color = ${colors.border}
+
+padding-left = 1
+padding-right = 1
+module-margin = 1
+
+; Font: JetBrains Mono with Cyrillic support
+font-0 = "JetBrains Mono:size=9;2"
+font-1 = "JetBrains Mono:style=Bold:size=9;2"
+
+; Modules
+modules-left = i3
+modules-center = date
+modules-right = memory cpu volume network battery
+
+; WM interaction
+wm-restack = i3
+
+; Cursor
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+enable-ipc = true
+
+[module/i3]
+type = internal/i3
+
+; Only show workspaces on the same output as the bar
+pin-workspaces = true
+
+; Workspace label format
+format = <label-state> <label-mode>
+
+label-mode = %mode%
+label-mode-padding = 1
+label-mode-background = ${colors.secondary}
+label-mode-foreground = ${colors.foreground}
+
+; Focused workspace
+label-focused = %name%
+label-focused-foreground = ${colors.signal-green}
+label-focused-background = ${colors.background-alt}
+label-focused-underline = ${colors.primary}
+label-focused-padding = 1
+
+; Unfocused workspace
+label-unfocused = %name%
+label-unfocused-foreground = ${colors.foreground-dim}
+label-unfocused-padding = 1
+
+; Visible (but not focused) workspace
+label-visible = %name%
+label-visible-foreground = ${colors.foreground}
+label-visible-padding = 1
+
+; Urgent workspace
+label-urgent = %name%
+label-urgent-foreground = ${colors.alert}
+label-urgent-background = ${colors.secondary}
+label-urgent-padding = 1
+
+[module/date]
+type = internal/date
+interval = 30
+
+; Date/time format
+; Using %d.%m.%Y for Russian locale convention
+date = %a %d.%m.%Y
+date-alt = %A, %d %B %Y
+
+time = %H:%M
+time-alt = %H:%M:%S
+
+label = %date%  %time%
+label-foreground = ${colors.foreground}
+
+[module/memory]
+type = internal/memory
+interval = 3
+
+format-prefix = "MEM "
+format-prefix-foreground = ${colors.primary}
+label = %percentage_used%%
+label-foreground = ${colors.foreground-dim}
+
+[module/cpu]
+type = internal/cpu
+interval = 3
+
+format-prefix = "CPU "
+format-prefix-foreground = ${colors.primary}
+label = %percentage%%
+label-foreground = ${colors.foreground-dim}
+
+[module/volume]
+type = internal/pulseaudio
+
+format-volume = <label-volume>
+format-volume-prefix = "VOL "
+format-volume-prefix-foreground = ${colors.primary}
+label-volume = %percentage%%
+label-volume-foreground = ${colors.foreground-dim}
+
+format-muted = <label-muted>
+format-muted-prefix = "MUT "
+format-muted-prefix-foreground = ${colors.alert}
+label-muted = --
+label-muted-foreground = ${colors.alert}
+
+click-right = pavucontrol
+
+[module/network]
+type = internal/network
+interface-type = wireless
+
+; Signal green for connected state
+format-connected = <label-connected>
+format-connected-prefix = "NET "
+format-connected-prefix-foreground = ${colors.signal-green}
+label-connected = %essid%
+label-connected-foreground = ${colors.signal-green}
+
+format-disconnected = <label-disconnected>
+format-disconnected-prefix = "NET "
+format-disconnected-prefix-foreground = ${colors.alert}
+label-disconnected = offline
+label-disconnected-foreground = ${colors.alert}
+
+[module/battery]
+type = internal/battery
+full-at = 98
+battery = BAT0
+adapter = AC
+
+poll-interval = 30
+
+format-charging = <label-charging>
+format-charging-prefix = "CHR "
+format-charging-prefix-foreground = ${colors.signal-green}
+label-charging = %percentage%%
+
+format-discharging = <label-discharging>
+format-discharging-prefix = "BAT "
+format-discharging-prefix-foreground = ${colors.primary}
+label-discharging = %percentage%%
+
+format-full = <label-full>
+format-full-prefix = "BAT "
+format-full-prefix-foreground = ${colors.signal-green}
+label-full = full
+
+[settings]
+screenchange-reload = true
+pseudo-transparency = false

@@ -1,0 +1,184 @@
+# ============================================================================
+# i3 config — Serial Experiments Lain rice
+# Source: i3wm.org/docs/userguide.html
+# Font: JetBrains Mono — supports Cyrillic glyphs
+# ============================================================================
+
+# --- Modifier key ---
+set $mod Mod4
+
+# --- Font ---
+# JetBrains Mono: monospace with full Cyrillic support
+# Source: https://www.jetbrains.com/lp/mono/
+font pango:JetBrains Mono 10
+
+# --- Colors (Lain palette) ---
+# Source: designbycurio.com Lain color guide + screencaps
+# Background: #0d0f14 (deep blue-gray)
+# Blood accent: #4d353c / #6b2d3c
+# Signal green: #39ff14 / #4a7c59
+
+# class                 border  backgr. text    indicator child_border
+client.focused          #4a7c59 #131927 #b8c0cc #39ff14   #4a7c59
+client.focused_inactive #2a2f3a #131927 #6b7280 #4d353c   #2a2f3a
+client.unfocused        #1a1d24 #0d0f14 #6b7280 #1a1d24   #1a1d24
+client.urgent           #6b2d3c #4d353c #b8c0cc #6b2d3c   #6b2d3c
+client.placeholder      #0d0f14 #0d0f14 #6b7280 #0d0f14   #0d0f14
+
+# --- Window decorations ---
+# Pixel-thin borders for Lain aesthetic
+default_border pixel 2
+default_floating_border pixel 2
+
+# Gaps (subtle breathing room)
+gaps inner 8
+gaps outer 4
+smart_gaps on
+smart_borders on
+
+# --- Keyboard layout ---
+# US + Russian with Alt+Shift toggle
+# Source: Arch Wiki — Xorg/Keyboard configuration
+exec --no-startup-id "setxkbmap -layout us,ru -option grp:alt_shift_toggle"
+
+# --- Autostart ---
+# Compositor (CRT effect via picom)
+exec_always --no-startup-id picom --config ~/.config/picom/picom.conf &
+
+# Status bar
+exec_always --no-startup-id polybar -c ~/.config/polybar/config.ini main &
+
+# Notification daemon
+exec --no-startup-id dunst &
+
+# Wallpaper
+exec_always --no-startup-id feh --bg-fill ~/.local/share/wallpapers/lain.png
+
+# Network applet
+exec --no-startup-id nm-applet &
+
+# --- Key bindings ---
+
+# Start terminal (Alacritty)
+bindsym $mod+Return exec alacritty
+
+# Kill focused window
+bindsym $mod+Shift+q kill
+
+# Start application launcher (rofi)
+bindsym $mod+d exec rofi -show run -config ~/.config/rofi/lain.rasi
+
+# Lock screen
+bindsym $mod+Escape exec ~/.local/bin/lock.sh
+
+# --- Movement ---
+# Focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# Arrow keys also work
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# Move windows
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# --- Workspaces ---
+set $ws1 "1: wired"
+set $ws2 "2: protocol"
+set $ws3 "3: layer"
+set $ws4 "4: dial"
+set $ws5 "5: flux"
+set $ws6 "6: schema"
+set $ws7 "7: knight"
+set $ws8 "8: nexus"
+set $ws9 "9: ego"
+set $ws10 "10: lain"
+
+# Switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+# Move container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+# --- Layout ---
+bindsym $mod+b splith
+bindsym $mod+v splitv
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+bindsym $mod+f fullscreen toggle
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
+
+# --- Resize mode ---
+mode "resize" {
+    bindsym h resize shrink width 10 px
+    bindsym j resize grow height 10 px
+    bindsym k resize shrink height 10 px
+    bindsym l resize grow width 10 px
+
+    bindsym Left resize shrink width 10 px
+    bindsym Down resize grow height 10 px
+    bindsym Up resize shrink height 10 px
+    bindsym Right resize grow width 10 px
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+# --- Scratchpad ---
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
+
+# --- Media keys ---
+bindsym XF86AudioRaiseVolume exec --no-startup-id pamixer -i 5
+bindsym XF86AudioLowerVolume exec --no-startup-id pamixer -d 5
+bindsym XF86AudioMute exec --no-startup-id pamixer -t
+bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+bindsym XF86AudioNext exec --no-startup-id playerctl next
+bindsym XF86AudioPrev exec --no-startup-id playerctl previous
+
+# --- Screenshot ---
+bindsym Print exec --no-startup-id maim ~/screenshot_%Y%m%d_%H%M%S.png
+
+# --- Reload / Restart / Exit ---
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Exit i3?' -B 'Yes' 'i3-msg exit'"
+
+# --- Floating window criteria ---
+for_window [class="(?i)float"] floating enable
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="dialog"] floating enable

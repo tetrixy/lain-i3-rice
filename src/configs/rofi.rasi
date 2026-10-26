@@ -1,0 +1,106 @@
+/* ============================================================================
+ * Rofi theme — Serial Experiments Lain rice
+ * Source: https://github.com/davatorium/rofi/blob/next/doc/rofi-theme.5.markdown
+ * ============================================================================ */
+
+* {
+  /* Lain palette */
+  bg: #0d0f14;
+  bg-alt: #131927;
+  fg: #b8c0cc;
+  fg-dim: #6b7280;
+  accent: #4a7c59;
+  urgent: #6b2d3c;
+  highlight: #39ff14;
+
+  background-color: transparent;
+  text-color: @fg;
+  font: "JetBrains Mono 11";
+}
+
+window {
+  width: 500px;
+  padding: 12px;
+  border: 1px solid @accent;
+  border-radius: 0px;
+  background-color: @bg;
+  location: center;
+  anchor: center;
+}
+
+mainbox {
+  spacing: 8px;
+}
+
+inputbar {
+  padding: 8px 12px;
+  border: 1px solid @fg-dim;
+  background-color: @bg-alt;
+  spacing: 8px;
+}
+
+prompt {
+  text-color: @accent;
+}
+
+textbox-prompt-colon {
+  expand: false;
+  str: ">";
+  text-color: @highlight;
+}
+
+entry {
+  text-color: @fg;
+  placeholder-color: @fg-dim;
+}
+
+listview {
+  lines: 8;
+  columns: 1;
+  fixed-height: true;
+  border: 0;
+  spacing: 2px;
+  scrollbar: true;
+}
+
+element {
+  padding: 6px 12px;
+  border: 0;
+}
+
+element normal.normal {
+  background-color: @bg;
+  text-color: @fg;
+}
+
+element selected.normal {
+  background-color: @bg-alt;
+  text-color: @highlight;
+  border: 1px solid @accent;
+}
+
+element alternate.normal {
+  background-color: @bg;
+  text-color: @fg-dim;
+}
+
+element-text {
+  highlight: bold;
+  text-color: inherit;
+}
+
+element-icon {
+  size: 0;
+}
+
+scrollbar {
+  width: 4px;
+  handle-width: 8px;
+  handle-color: @accent;
+}
+
+message {
+  padding: 8px;
+  border: 1px solid @urgent;
+  background-color: @bg-alt;
+}
