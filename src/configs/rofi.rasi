@@ -85,7 +85,7 @@ element alternate.normal {
 }
 
 element-text {
-  highlight: inherit;
+  highlight: None;
   text-color: inherit;
 }
 

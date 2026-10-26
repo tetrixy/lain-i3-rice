@@ -30,7 +30,7 @@ ranger
 
 # Fonts (monospace with Cyrillic support)
 ttf-jetbrains-mono
-ttf-iosevka
+# NOTE: ttf-iosevka is from AUR (installed separately in install.sh)
 
 # Utilities
 xorg-xset

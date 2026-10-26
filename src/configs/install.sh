@@ -172,8 +172,22 @@ while IFS= read -r line || [[ -n "$line" ]]; do
 done < "$DOTFILES_DIR/packages.txt"
 
 # Install AUR packages
+# Handle conflicts: picom-git conflicts with picom
+if pacman -Q picom &>/dev/null; then
+  warn "Removing conflicting package: picom (replacing with picom-git)"
+  run_cmd sudo pacman -R --noconfirm picom
+fi
 install_aur_pkg "picom-git"
+
+# Handle conflicts: i3lock-color conflicts with i3lock
+if pacman -Q i3lock &>/dev/null; then
+  warn "Removing conflicting package: i3lock (replacing with i3lock-color)"
+  run_cmd sudo pacman -R --noconfirm i3lock
+fi
 install_aur_pkg "i3lock-color"
+
+# Install ttf-iosevka from AUR
+install_aur_pkg "ttf-iosevka"
 
 # --- Step 2: Deploy configuration files ---
 info "Step 2: Deploying configuration files..."

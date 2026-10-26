@@ -172,7 +172,7 @@ function OverviewSection() {
         <StatCard label="Файлов" value="9" />
         <StatCard label="Пакетов" value="~20" />
         <StatCard label="Горячих клавиш" value={hotkeys.length.toString()} />
-        <StatCard label="AUR-пакетов" value="2" />
+        <StatCard label="AUR-пакетов" value="3" />
       </div>
 
       {/* Requirements */}
