@@ -18,8 +18,9 @@ alacritty
 # Wallpaper setter
 feh
 
-# Screen locker (themed version from AUR: i3lock-color)
-i3lock
+# Screen locker
+# NOTE: i3lock-color (AUR) is installed separately in install.sh
+# It replaces the regular i3lock package
 
 # Notification daemon
 dunst

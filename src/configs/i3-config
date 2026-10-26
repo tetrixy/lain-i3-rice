@@ -43,19 +43,24 @@ exec --no-startup-id "setxkbmap -layout us,ru -option grp:alt_shift_toggle"
 
 # --- Autostart ---
 # Compositor (CRT effect via picom)
-exec_always --no-startup-id picom --config ~/.config/picom/picom.conf &
+# Note: i3 launches exec/exec_always commands in background automatically, no '&' needed
+exec_always --no-startup-id picom --config ~/.config/picom/picom.conf
+
+# Kill any existing polybar instances before starting new one
+# '|| true' prevents error if polybar is not running
+exec_always --no-startup-id killall -q polybar || true
 
 # Status bar
-exec_always --no-startup-id polybar -c ~/.config/polybar/config.ini main &
+exec_always --no-startup-id polybar -c ~/.config/polybar/config.ini main
 
 # Notification daemon
-exec --no-startup-id dunst &
+exec --no-startup-id dunst
 
 # Wallpaper
 exec_always --no-startup-id feh --bg-fill ~/.local/share/wallpapers/lain.png
 
 # Network applet
-exec --no-startup-id nm-applet &
+exec --no-startup-id nm-applet
 
 # --- Key bindings ---
 
@@ -171,7 +176,7 @@ bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 
 # --- Screenshot ---
-bindsym Print exec --no-startup-id maim ~/screenshot_%Y%m%d_%H%M%S.png
+bindsym Print exec --no-startup-id maim ~/screenshot_$(date +%Y%m%d_%H%M%S).png
 
 # --- Reload / Restart / Exit ---
 bindsym $mod+Shift+c reload

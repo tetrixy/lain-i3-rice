@@ -16,10 +16,10 @@ mkdir -p "$WALLPAPER_DIR"
 if [[ "${1:-}" == "--download" ]] || [[ ! -f "$WALLPAPER_PATH" ]]; then
   echo "[lain-rice] Downloading wallpaper..."
   echo "[lain-rice] Загрузка обоев..."
-  curl -L -o "$WALLPAPER_PATH" "$WALLPAPER_URL"
-  if [[ $? -ne 0 ]]; then
+  if ! curl -fL -o "$WALLPAPER_PATH" "$WALLPAPER_URL"; then
     echo "[lain-rice] ERROR: Failed to download wallpaper" >&2
     echo "[lain-rice] ОШИБКА: Не удалось загрузить обои" >&2
+    rm -f "$WALLPAPER_PATH"
     exit 1
   fi
   echo "[lain-rice] Wallpaper downloaded to: $WALLPAPER_PATH"

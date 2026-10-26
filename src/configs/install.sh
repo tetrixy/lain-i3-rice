@@ -7,7 +7,7 @@
 set -euo pipefail
 
 # --- Configuration ---
-DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 CONFIG_SRC="$DOTFILES_DIR/config"
 SCRIPTS_SRC="$DOTFILES_DIR/scripts"
 WALLPAPER_URL="https://rare-gallery.com/thumbs/1119968-anime-blue-Serial-Experiments-Lain-Lain-Iwakura-color-darkness-image-snapshot-screenshot.png"
@@ -165,7 +165,7 @@ echo ""
 info "Step 1: Installing packages..."
 while IFS= read -r line || [[ -n "$line" ]]; do
   # Skip comments and empty lines
-  line="$(echo "$line" | sed 's/#.*//' | xargs)"
+  line="$(echo "$line" | sed 's/#.*//' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')"
   [[ -z "$line" ]] && continue
 
   install_pkg "$line"
