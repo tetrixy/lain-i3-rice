@@ -8,8 +8,8 @@ set -euo pipefail
 
 # --- Configuration ---
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-CONFIG_SRC="$DOTFILES_DIR/config"
-SCRIPTS_SRC="$DOTFILES_DIR/scripts"
+CONFIG_SRC="$DOTFILES_DIR"
+SCRIPTS_SRC="$DOTFILES_DIR"
 WALLPAPER_URL="https://rare-gallery.com/thumbs/1119968-anime-blue-Serial-Experiments-Lain-Lain-Iwakura-color-darkness-image-snapshot-screenshot.png"
 DRY_RUN=false
 BACKUP_SUFFIX=".bak.$(date +%s)"
@@ -177,7 +177,7 @@ while IFS= read -r line || [[ -n "$line" ]]; do
   [[ -z "$line" ]] && continue
 
   install_pkg "$line"
-done < "$DOTFILES_DIR/packages.txt"
+done < "$CONFIG_SRC/packages.txt"
 
 # Install AUR packages
 # Handle conflicts: picom-git conflicts with picom
@@ -201,19 +201,19 @@ install_aur_pkg "ttf-iosevka"
 info "Step 2: Deploying configuration files..."
 
 # i3 config
-deploy_config "$CONFIG_SRC/i3/config" "$HOME/.config/i3/config"
+deploy_config "$CONFIG_SRC/i3-config" "$HOME/.config/i3/config"
 
 # Polybar config
-deploy_config "$CONFIG_SRC/polybar/config.ini" "$HOME/.config/polybar/config.ini"
+deploy_config "$CONFIG_SRC/polybar-config" "$HOME/.config/polybar/config.ini"
 
 # Picom config
-deploy_config "$CONFIG_SRC/picom/picom.conf" "$HOME/.config/picom/picom.conf"
+deploy_config "$CONFIG_SRC/picom.conf" "$HOME/.config/picom/picom.conf"
 
 # Rofi config
-deploy_config "$CONFIG_SRC/rofi/lain.rasi" "$HOME/.config/rofi/lain.rasi"
+deploy_config "$CONFIG_SRC/rofi.rasi" "$HOME/.config/rofi/lain.rasi"
 
 # Alacritty config
-deploy_config "$CONFIG_SRC/alacritty/alacritty.yml" "$HOME/.config/alacritty/alacritty.yml"
+deploy_config "$CONFIG_SRC/alacritty.yml" "$HOME/.config/alacritty/alacritty.yml"
 
 # Dunst config
 deploy_config "$CONFIG_SRC/dunstrc" "$HOME/.config/dunst/dunstrc"
@@ -224,8 +224,8 @@ deploy_config "$CONFIG_SRC/mpd.conf" "$HOME/.config/mpd/mpd.conf"
 # ncmpcpp config
 deploy_config "$CONFIG_SRC/ncmpcpp.conf" "$HOME/.config/ncmpcpp/config"
 
-# Xresources
-deploy_config "$CONFIG_SRC/Xresources" "$HOME/.Xresources"
+# Xresources (in root, not in config/)
+deploy_config "$DOTFILES_DIR/Xresources" "$HOME/.Xresources"
 
 # GTK 3.0 settings
 deploy_config "$CONFIG_SRC/gtk-3.0-settings.ini" "$HOME/.config/gtk-3.0/settings.ini"
