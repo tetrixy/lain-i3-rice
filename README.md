@@ -32,11 +32,18 @@ git clone https://github.com/tetrixy/lain-i3-rice.git
 cd lain-i3-rice
 ```
 
-### 2. Сделать скрипт исполняемым
+### 2. Запустить установку
 
 ```bash
-chmod +x install.sh
+./install.sh
 ```
+
+Скрипт автоматически:
+- Установит ~55 пакетов из официальных репозиториев
+- Установит 3 AUR-пакета (picom-git, i3lock-color, ttf-iosevka)
+- Развернёт все конфигурационные файлы
+- Скачает обои Lain
+- Включит Bluetooth и TLP сервисы
 
 ### 3. (Опционально) Проверить что будет сделано без реальных изменений
 
@@ -44,17 +51,9 @@ chmod +x install.sh
 ./install.sh --dry-run
 ```
 
-Скрипт напечатает все команды, которые будут выполнены, но не выполнит их. Полезно для первого запуска, чтобы понять масштаб изменений.
+Скрипт напечатает все команды, которые будут выполнены, но не выполнит их.
 
-### 4. Запустить установку
-
-```bash
-./install.sh
-```
-
-Скрипт попросит пароль sudo для установки пакетов.
-
-### 5. Перезагрузиться и войти в i3
+### 4. Перезагрузиться и войти в i3
 
 ```bash
 reboot
@@ -412,6 +411,12 @@ battery = BAT0    # Замените на ваше имя (BAT0, BAT1, BATT, CMB
 adapter = AC      # Замените на ваше имя (AC, ACAD, ADP0, ADP1)
 ```
 
+После изменения перезапустите polybar:
+
+```bash
+polybar-msg cmd restart
+```
+
 ### Polybar: сеть не отображается на desktop
 
 Если у вас desktop (нет Wi-Fi), отредактируйте `~/.config/polybar/config.ini`:
@@ -421,7 +426,38 @@ adapter = AC      # Замените на ваше имя (AC, ACAD, ADP0, ADP1)
 interface-type = ethernet  # Было: wireless
 ```
 
-Или закомментируйте модуль network.
+Или закомментируйте модуль network в секции `modules-right`:
+
+```ini
+modules-right = memory cpu volume battery
+```
+
+После изменения перезапустите polybar:
+
+```bash
+polybar-msg cmd restart
+```
+
+### Polybar: модуль MPD показывает "mpd offline"
+
+Убедитесь, что MPD запущен:
+
+```bash
+systemctl --user status mpd
+mpc status
+```
+
+Если MPD не запущен:
+
+```bash
+systemctl --user enable --now mpd
+```
+
+Если музыкальная библиотека пуста, добавьте музыку в `~/Music/` и обновите базу:
+
+```bash
+mpc update
+```
 
 ---
 

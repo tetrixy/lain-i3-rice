@@ -1,5 +1,27 @@
+# Dependencies
 node_modules/
-.next/
+
+# Build output
 dist/
-build/
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
 *.log
+
+# Backup files
+*.bak.*
+
+# Wallpaper (downloaded at install time)
+wallpapers/lain.png
+.next/
+build/
