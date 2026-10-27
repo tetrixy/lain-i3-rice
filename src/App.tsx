@@ -179,6 +179,11 @@ function OverviewSection() {
           title="Clipit + dunst"
           description="Менеджер буфера обмена с историей и красивые уведомления в стиле Lain"
         />
+        <FeatureCard
+          icon="🎭"
+          title="Lain Scripts"
+          description="Креативные скрипты: ритуал подключения, глитч-режим, цитаты, кинематографический выход"
+        />
       </div>
 
       {/* Repo Tree */}
@@ -194,7 +199,7 @@ function OverviewSection() {
 
       {/* Quick Stats */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <StatCard label="Файлов" value="19" />
+        <StatCard label="Файлов" value="24" />
         <StatCard label="Пакетов" value="~55" />
         <StatCard label="Горячих клавиш" value={hotkeys.length.toString()} />
         <StatCard label="AUR-пакетов" value="3" />

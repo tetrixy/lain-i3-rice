@@ -195,13 +195,26 @@ bindsym XF86MonBrightnessDown exec --no-startup-id ~/.local/bin/brightness.sh --
 bindsym $mod+m exec --no-startup-id alacritty -e ncmpcpp
 bindsym $mod+Shift+m exec --no-startup-id ~/.local/bin/mpd-control.sh toggle
 
+# --- Lain creative scripts ---
+# Connect to the Wired ritual
+bindsym $mod+Shift+w exec --no-startup-id alacritty -e ~/.local/bin/connect-to-wired.sh
+
+# Dissociation glitch mode (5 seconds)
+bindsym $mod+Shift+g exec --no-startup-id alacritty -e ~/.local/bin/dissociation.sh 5
+
+# Random quote from Lain
+bindsym $mod+Shift+q exec --no-startup-id alacritty -e ~/.local/bin/quotes.sh --terminal
+
+# Cinematic exit
+bindsym $mod+Shift+e exec --no-startup-id alacritty -e ~/.local/bin/ending.sh
+
 # --- Screenshot ---
 bindsym Print exec --no-startup-id maim ~/screenshot_$(date +%Y%m%d_%H%M%S).png
 
-# --- Reload / Restart / Exit ---
+# --- Reload / Restart ---
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Exit i3?' -B 'Yes' 'i3-msg exit'"
+# Note: Exit is now handled by ending.sh (Mod+Shift+E in Lain scripts section)
 
 # --- Window assignments ---
 # Assign applications to specific workspaces

@@ -17,6 +17,11 @@ import mpdControlSh from '../configs/mpd-control.sh?raw';
 import xresources from '../configs/Xresources?raw';
 import gtkSettings from '../configs/gtk-3.0-settings.ini?raw';
 import setupThemeSh from '../configs/setup-theme.sh?raw';
+import connectToWiredSh from '../configs/connect-to-wired.sh?raw';
+import dissociationSh from '../configs/dissociation.sh?raw';
+import quotesSh from '../configs/quotes.sh?raw';
+import notFoundSh from '../configs/404.sh?raw';
+import endingSh from '../configs/ending.sh?raw';
 
 export interface RepoFile {
   path: string;
@@ -153,6 +158,41 @@ export const repoFiles: RepoFile[] = [
     language: "bash",
     category: "scripts"
   },
+  {
+    path: "scripts/connect-to-wired.sh",
+    description: "Ritual of connecting to the Wired — animated terminal sequence",
+    content: connectToWiredSh,
+    language: "bash",
+    category: "scripts"
+  },
+  {
+    path: "scripts/dissociation.sh",
+    description: "Temporary glitch mode — visual only, no sound",
+    content: dissociationSh,
+    language: "bash",
+    category: "scripts"
+  },
+  {
+    path: "scripts/quotes.sh",
+    description: "Show random quotes from Serial Experiments Lain",
+    content: quotesSh,
+    language: "bash",
+    category: "scripts"
+  },
+  {
+    path: "scripts/404.sh",
+    description: "Show 'not found' message in Lain style",
+    content: notFoundSh,
+    language: "bash",
+    category: "scripts"
+  },
+  {
+    path: "scripts/ending.sh",
+    description: "Cinematic exit from i3 — 'Disconnect from the Wired?'",
+    content: endingSh,
+    language: "bash",
+    category: "scripts"
+  },
 ];
 
 export const repoTree = `lain-i3-rice/
@@ -186,7 +226,12 @@ export const repoTree = `lain-i3-rice/
 │   ├── screenshot.sh
 │   ├── brightness.sh
 │   ├── mpd-control.sh
-│   └── setup-theme.sh
+│   ├── setup-theme.sh
+│   ├── connect-to-wired.sh
+│   ├── dissociation.sh
+│   ├── quotes.sh
+│   ├── 404.sh
+│   └── ending.sh
 └── wallpapers/
     └── (lain.png — downloaded at install time)`;
 
@@ -205,6 +250,10 @@ export const hotkeys = [
   { keys: "Mod+Shift+e", action: "Exit i3", actionRu: "Выйти из i3" },
   { keys: "Mod+m", action: "Open music player (ncmpcpp)", actionRu: "Открыть плеер" },
   { keys: "Mod+Shift+m", action: "Toggle MPD play/pause", actionRu: "Воспр./пауза MPD" },
+  { keys: "Mod+Shift+w", action: "Connect to the Wired ritual", actionRu: "Ритуал подключения" },
+  { keys: "Mod+Shift+g", action: "Dissociation glitch mode (5s)", actionRu: "Глитч-режим (5 сек)" },
+  { keys: "Mod+Shift+q", action: "Random Lain quote", actionRu: "Случайная цитата" },
+  { keys: "Mod+Shift+e", action: "Cinematic exit", actionRu: "Кинематографический выход" },
   { keys: "Print", action: "Screenshot (full)", actionRu: "Скриншот (весь экран)" },
   { keys: "XF86MonBrightnessUp/Down", action: "Brightness control", actionRu: "Яркость" },
   { keys: "XF86AudioPlay/Next/Prev", action: "Media control", actionRu: "Управление медиа" },

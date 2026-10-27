@@ -242,6 +242,13 @@ deploy_config "$SCRIPTS_SRC/brightness.sh" "$HOME/.local/bin/brightness.sh"
 deploy_config "$SCRIPTS_SRC/mpd-control.sh" "$HOME/.local/bin/mpd-control.sh"
 deploy_config "$SCRIPTS_SRC/setup-theme.sh" "$HOME/.local/bin/setup-theme.sh"
 
+# Lain creative scripts
+deploy_config "$SCRIPTS_SRC/connect-to-wired.sh" "$HOME/.local/bin/connect-to-wired.sh"
+deploy_config "$SCRIPTS_SRC/dissociation.sh" "$HOME/.local/bin/dissociation.sh"
+deploy_config "$SCRIPTS_SRC/quotes.sh" "$HOME/.local/bin/quotes.sh"
+deploy_config "$SCRIPTS_SRC/404.sh" "$HOME/.local/bin/404.sh"
+deploy_config "$SCRIPTS_SRC/ending.sh" "$HOME/.local/bin/ending.sh"
+
 if ! $DRY_RUN; then
   chmod +x "$HOME/.local/bin/wallpaper.sh"
   chmod +x "$HOME/.local/bin/lock.sh"
@@ -249,6 +256,11 @@ if ! $DRY_RUN; then
   chmod +x "$HOME/.local/bin/brightness.sh"
   chmod +x "$HOME/.local/bin/mpd-control.sh"
   chmod +x "$HOME/.local/bin/setup-theme.sh"
+  chmod +x "$HOME/.local/bin/connect-to-wired.sh"
+  chmod +x "$HOME/.local/bin/dissociation.sh"
+  chmod +x "$HOME/.local/bin/quotes.sh"
+  chmod +x "$HOME/.local/bin/404.sh"
+  chmod +x "$HOME/.local/bin/ending.sh"
 fi
 
 # --- Step 4: Download wallpaper ---
