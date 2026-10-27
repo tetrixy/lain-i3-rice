@@ -28,7 +28,7 @@
 ### 1. Клонировать репозиторий
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/lain-i3-rice.git
+git clone https://github.com/tetrixy/lain-i3-rice.git
 cd lain-i3-rice
 ```
 
