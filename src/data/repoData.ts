@@ -5,7 +5,7 @@ import i3Config from '../configs/i3-config?raw';
 import polybarConfig from '../configs/polybar-config?raw';
 import picomConf from '../configs/picom.conf?raw';
 import rofiRasi from '../configs/rofi.rasi?raw';
-import alacrittyYml from '../configs/alacritty.yml?raw';
+import alacrittyToml from '../configs/alacritty.toml?raw';
 import wallpaperSh from '../configs/wallpaper.sh?raw';
 import lockSh from '../configs/lock.sh?raw';
 import dunstrc from '../configs/dunstrc?raw';
@@ -75,10 +75,10 @@ export const repoFiles: RepoFile[] = [
     category: "config"
   },
   {
-    path: "config/alacritty/alacritty.yml",
-    description: "Alacritty terminal — Lain color scheme, JetBrains Mono with Cyrillic",
-    content: alacrittyYml,
-    language: "yaml",
+    path: "config/alacritty/alacritty.toml",
+    description: "Alacritty terminal (TOML format) — Lain color scheme, JetBrains Mono with Cyrillic",
+    content: alacrittyToml,
+    language: "toml",
     category: "config"
   },
   {
@@ -211,7 +211,7 @@ export const repoTree = `lain-i3-rice/
 │   ├── rofi/
 │   │   └── lain.rasi
 │   ├── alacritty/
-│   │   └── alacritty.yml
+│   │   └── alacritty.toml
 │   ├── dunst/
 │   │   └── dunstrc
 │   ├── mpd/

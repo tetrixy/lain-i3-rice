@@ -138,6 +138,8 @@ click-right = pavucontrol
 
 [module/network]
 type = internal/network
+; NOTE: interface-type can be "wireless" or "ethernet"
+; For desktop PCs, change to "ethernet" or comment out this module
 interface-type = wireless
 
 ; Signal green for connected state
@@ -156,6 +158,10 @@ label-disconnected-foreground = ${colors.alert}
 [module/battery]
 type = internal/battery
 full-at = 98
+; NOTE: Battery and adapter names vary by laptop
+; Check with: ls /sys/class/power_supply/
+; Common names: BAT0, BAT1, BATT, CMB0
+; Adapter: AC, ACAD, ADP0, ADP1
 battery = BAT0
 adapter = AC
 

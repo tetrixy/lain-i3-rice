@@ -212,8 +212,8 @@ deploy_config "$CONFIG_SRC/picom.conf" "$HOME/.config/picom/picom.conf"
 # Rofi config
 deploy_config "$CONFIG_SRC/rofi.rasi" "$HOME/.config/rofi/lain.rasi"
 
-# Alacritty config
-deploy_config "$CONFIG_SRC/alacritty.yml" "$HOME/.config/alacritty/alacritty.yml"
+# Alacritty config (TOML format — required since 0.13.0)
+deploy_config "$CONFIG_SRC/alacritty.toml" "$HOME/.config/alacritty/alacritty.toml"
 
 # Dunst config
 deploy_config "$CONFIG_SRC/dunstrc" "$HOME/.config/dunst/dunstrc"

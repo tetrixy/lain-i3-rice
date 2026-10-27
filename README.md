@@ -305,7 +305,7 @@ lain-i3-rice/
 ├── polybar-config             # Конфиг polybar
 ├── picom.conf                 # Конфиг picom (CRT-эффект)
 ├── rofi.rasi                  # Тема rofi
-├── alacritty.yml              # Конфиг alacritty
+├── alacritty.toml             # Конфиг alacritty (TOML формат)
 ├── dunstrc                    # Конфиг dunst
 ├── mpd.conf                   # Конфиг MPD
 ├── ncmpcpp.conf               # Конфиг ncmpcpp
@@ -395,6 +395,33 @@ pactl info | grep "Server Name"
 sudo systemctl enable --now bluetooth
 blueman-manager
 ```
+
+### Polybar: батарея не отображается
+
+Имя батареи и адаптера различается на разных ноутбуках. Проверьте:
+
+```bash
+ls /sys/class/power_supply/
+```
+
+Отредактируйте `~/.config/polybar/config.ini`:
+
+```ini
+[module/battery]
+battery = BAT0    # Замените на ваше имя (BAT0, BAT1, BATT, CMB0)
+adapter = AC      # Замените на ваше имя (AC, ACAD, ADP0, ADP1)
+```
+
+### Polybar: сеть не отображается на desktop
+
+Если у вас desktop (нет Wi-Fi), отредактируйте `~/.config/polybar/config.ini`:
+
+```ini
+[module/network]
+interface-type = ethernet  # Было: wireless
+```
+
+Или закомментируйте модуль network.
 
 ---
 
