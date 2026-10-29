@@ -252,7 +252,7 @@ export const hotkeys = [
   { keys: "Mod+Shift+m", action: "Toggle MPD play/pause", actionRu: "Воспр./пауза MPD" },
   { keys: "Mod+Shift+w", action: "Connect to the Wired ritual", actionRu: "Ритуал подключения" },
   { keys: "Mod+Shift+g", action: "Dissociation glitch mode (5s)", actionRu: "Глитч-режим (5 сек)" },
-  { keys: "Mod+Shift+q", action: "Random Lain quote", actionRu: "Случайная цитата" },
+  { keys: "Mod+Ctrl+q", action: "Random Lain quote", actionRu: "Случайная цитата" },
   { keys: "Mod+Shift+e", action: "Cinematic exit", actionRu: "Кинематографический выход" },
   { keys: "Print", action: "Screenshot (full)", actionRu: "Скриншот (весь экран)" },
   { keys: "XF86MonBrightnessUp/Down", action: "Brightness control", actionRu: "Яркость" },
